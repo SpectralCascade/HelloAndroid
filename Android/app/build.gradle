@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\2013b\\Git\\HelloAndroid\\Android\\keystore.jks')
+            storePassword 'spectral'
+            keyPassword 'spectral'
+            keyAlias 'hello-android-release'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -19,10 +27,12 @@ android {
         debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
